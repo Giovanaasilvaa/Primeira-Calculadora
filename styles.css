@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+/* Estilos gerais */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-image: url('vecteezy_abstract-shapes-and-line-in-nude-pastel-colors-neutral_8169402.jpg');
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Estilo do container para texto e calculadora */
+.container {
+    display: flex;
+    justify-content: space-between; /* Espaço entre texto e calculadora */
+    width: 100%; /* Usar 100% da largura da tela */
+    max-width: 900px; /* Limitar a largura máxima */
+}
+
+/* Alinhamento do texto */
+#texto {
+    display: flex;
+    flex-direction: column; /* Colocar texto em coluna */
+    justify-content: center; /* Centraliza verticalmente */
+}
+
+/* Estilo do texto */
+#texto h2 {
+    font-size: 16px; /* Reduz o tamanho da fonte dos nomes */
+    margin: 2px 0;   /* Diminui o espaçamento entre os nomes */
+    font-weight: 500; /* Deixa o texto um pouco mais leve */
+}
+
+
+/* Estilo da calculadora */
+#calculadora {
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 300px; /* Aumenta a largura para acomodar os botões maiores */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas de tamanho igual */
+    grid-gap: 10px;
+}
+
+/* Estilo do visor da calculadora */
+#resultado {
+    grid-column: span 4;
+    width: 100%;
+    height: 50px;
+    text-align: right;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #e0b692;
+    color: white;
+    font-family: 'Fredoka', sans-serif; 
+}
+
+/* Estilo dos botões */
+input[type="button"] {
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif; /* Aplica a fonte aos botões */
+}
+
+/* Botões de números e operadores têm o mesmo tamanho */
+input[type="button"].numero, input[type="button"].operador {
+    background-color: #555;
+    width: 100%;
+}
+
+input[type="button"].numero:hover, input[type="button"].operador:hover {
+    background-color: #666;
+}
+
+/* Botões de operações (cores diferentes para destaque) */
+input[type="button"].operador {
+    background-color: #aaa29c;
+    
+}
+
+input[type="button"].operador:hover {
+    background-color: #6d6762;
+}
+
+/* Botões especiais (ON/CE e OFF) - eles terão o dobro da largura */
+input[type="button"].on-off {
+    grid-column: span 2; /* Cada botão ocupa 2 colunas */
+    background-color: #f1b27b;
+    height: 50px; /* Tornar os botões maiores em altura */
+    font-size: 20px; /* Aumentar o texto */
+    
+}
+
+input[type="button"].on-off:hover {
+    background-color: #b18560;
+}
+
+/* Botão de igual */
+input[type="button"].igual {
+    background-color: #e0b692;
+    grid-column: span 4;
+    font-size: 34px;
+
+}
+
+input[type="button"].igual:hover {
+    background-color: #b49376;
+}
+
+/* Botão de ponto */
+input[type="button"].ponto {
+    background-color: #aaa29c;
+    font-family: 'Fredoka', sans-serif; /* Aplica a fonte aos botões */
+    font-size: 30px;
+}
+
+input[type="button"].ponto:hover {
+    background-color: #6d6762;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS externo -->
+    <link rel="icon" type="image/png" href="icone/android-chrome-192x192.png ">
+</head>
+<body>
+    <div class="container">
+        <div id="texto">
+            <h1>Bem-vindo à Calculadora</h1>
+            <h2>Giovana Marques Silva;</h2>
+        </div>
+<div id="calculadora">
+    <input type="text" id="resultado" disabled>
+    
+    <!-- Primeira linha: ON/CE e OFF maiores, ocupando 2 colunas cada -->
+    <input type="button" value="ON/CE" class="on-off" onclick="limpar()">
+    <input type="button" value="OFF" class="on-off" onclick="limpar()"> <!-- Limpa o visor -->
+   
+    
+    <!-- Segunda linha: Operadores -->
+    <input type="button" value="%" class="operador" onclick="adicionarValor('%')">
+    <input type="button" value="." class="numero ponto" onclick="adicionarValor('.')">
+    <input type="button" value="/" class="operador" onclick="adicionarValor('/')">
+    <input type="button" value="*" class="operador" onclick="adicionarValor('*')">
+    
+    <!-- Terceira linha: Números 7-9 e operador menos -->
+     <input type="button" value="7" class="numero" onclick="adicionarValor('7')">
+     <input type="button" value="8" class="numero" onclick="adicionarValor('8')">
+     <input type="button" value="9" class="numero" onclick="adicionarValor('9')">
+     <input type="button" value="-" class="operador" onclick="adicionarValor('-')">
+    
+    <!-- Quarta linha: Números 4-6 e operador mais -->
+    <input type="button" value="4" class="numero" onclick="adicionarValor('4')">
+    <input type="button" value="5" class="numero" onclick="adicionarValor('5')">
+    <input type="button" value="6" class="numero" onclick="adicionarValor('6')">
+    <input type="button" value="+" class="operador" onclick="adicionarValor('+')">
+    
+    <!-- Quinta linha: Números 1-3, ponto e igual -->
+    <input type="button" value="1" class="numero" onclick="adicionarValor('1')">
+    <input type="button" value="2" class="numero" onclick="adicionarValor('2')">
+    <input type="button" value="3" class="numero" onclick="adicionarValor('3')">
+    
+    
+    <!-- Última linha: Botão 0 e igual ocupando 2 colunas -->
+    <input type="button" value="0" class="operador" onclick="adicionarValor('0')">
+    <input type="button" value="=" class="igual" onclick="calcular()">
+</div>
+
+<script>
+    function adicionarValor(valor) {
+        document.getElementById('resultado').value += valor;
+    }
+
+    function limpar() {
+        document.getElementById('resultado').value = '';
+    }
+
+    function calcular() {
+        try {
+            let expressao = document.getElementById('resultado').value;
+
+            // Substitui o '%' por ' * 0.01' na expressão
+            expressao = expressao.replace(/(\d+)%/g, (match, p1) => {
+                return `(${p1} * 0.01)`; // Converte a porcentagem para decimal
+            });
+
+            // Verifica se a expressão contém uma divisão por zero
+            if (/\/\s*0/.test(expressao)) {
+                throw new Error("Divisão por zero");
+            }
+
+            // Avalia a expressão final
+            const resultado = eval(expressao);
+            document.getElementById('resultado').value = resultado;
+        } catch (e) {
+            document.getElementById('resultado').value = 'Erro';
+        }
+    }
+</script>
+</body>
+</html>
